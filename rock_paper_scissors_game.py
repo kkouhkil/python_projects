@@ -7,13 +7,13 @@ def get_player_choice():
         player_choice = input("\nEnter your choice please (Rock, Paper, Scissors): ")
         player_choice_tmp = player_choice.lower()
 
-        if player_choice_tmp != "rock" or player_choice_tmp != "paper" or player_choice_tmp != "scissors":
-            print("WRONG INPUT! Select only one choice from Rock, Paper and Scissors!")
-
         if player_choice_tmp == "rock" or player_choice_tmp == "paper" or player_choice_tmp == "scissors":
             player_choise_satisfaction = False
 
-    
+        else:
+            print("WRONG INPUT! Select only one choice from Rock, Paper and Scissors!")
+            player_choise_satisfaction = True
+
     player_choice_first_letter = player_choice[0].upper()
     player_choice = player_choice_first_letter + player_choice_tmp[1:]
 
