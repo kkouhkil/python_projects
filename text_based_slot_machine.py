@@ -55,7 +55,6 @@ def bet_on_each_line(deposit_amount, number_of_lines):
 
     return float(bet_on_each_line)
 
-# PART IN PROGRESS
 def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     symbol_count_dict = {"A" : 1 * COL_COUNT * number_of_lines, 
                     "K" : 2 * COL_COUNT * number_of_lines,
@@ -133,9 +132,8 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
         print(f"Balance = ${remaining_balance + total_win_amount}")  
     else:
         print(f"Balance = ${remaining_balance}")  
-
-    pass
-
+    
+    return float(remaining_balance)
 
 def main():
 
@@ -144,9 +142,8 @@ def main():
     bet_on_each_line_call = bet_on_each_line(get_deposit_call, get_number_of_lines_call)
     total_bet = get_number_of_lines_call * bet_on_each_line_call
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
+    new_balance = float(slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call))
 
-    # PART IN PROGRESS
-    slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call)
 
 while(True):
     main()
