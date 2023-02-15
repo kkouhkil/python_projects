@@ -83,17 +83,9 @@ def slot_machine_algorithm(number_of_lines):
             
     # Checking the winning scenario      
     lines_won = 0  
-    for i in range(slot_machine_row):
-        if slot_machine_matrix[i][:] == "A":
-            print("You Won!")
-        if slot_machine_matrix[i][:] == "K":
-            print("You Won!")
-        if slot_machine_matrix[i][:] == "Q":
-            print("You Won!")        
-        if slot_machine_matrix[i][:] == "J":
-            print("You Won!")
 
     print(slot_machine_matrix)
+    print(all(element == "J" for element in slot_machine_matrix[0][:]))
 
     pass
 
