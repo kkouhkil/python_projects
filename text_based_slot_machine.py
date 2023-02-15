@@ -1,4 +1,5 @@
 import random as r
+from colorama import Fore, Style
 
 MIN_DEPOSIT = float(5)
 MIN_BET = float(1)
@@ -28,7 +29,7 @@ def get_number_of_lines(deposit_amount):
         number_of_lines = input("Enter the number of lines you want to bet please: ")
         try:
             int(number_of_lines)
-            if int(number_of_lines) > 0 and int(number_of_lines) < int(deposit_amount):
+            if int(number_of_lines) > 0 and int(number_of_lines) <= int(deposit_amount):
                 get_number_of_lines_satisfaction = bool(False)
             else:
                 print(f"Wrong input!, Enter a positive amount between {0} and {int(deposit_amount)}, Try again!")
@@ -56,6 +57,8 @@ def bet_on_each_line(deposit_amount, number_of_lines):
     return float(bet_on_each_line)
 
 def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
+    print(Style.RESET_ALL)
+
     symbol_count_dict = {"A" : 1 * COL_COUNT * number_of_lines, 
                     "K" : 2 * COL_COUNT * number_of_lines,
                     "Q" : 3 * COL_COUNT * number_of_lines,
@@ -120,11 +123,13 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     total_win_amount = line_A_win_amonut + line_K_win_amonut + line_Q_win_amonut + line_J_win_amonut
     
     if line_A_won_count == 0 and  line_K_won_count == 0 and line_Q_won_count == 0 and line_J_won_count == 0:
-        print(f"\nUnfortunately you did not win anything. Better luck next time!")
+        print(Fore.RED + f"\nUnfortunately you did not win anything. Better luck next time!")
+        print(Style.RESET_ALL)
 
     if  line_A_won_count != 0 or  line_K_won_count != 0 or line_Q_won_count != 0 or line_J_won_count != 0:  
-        print(f"\nCongratulations!, Number of winning lines: {total_line_won_count}")
-        print(f"\nYou have just won ${total_win_amount}")  
+        print(Fore.GREEN + f"\nCongratulations!, Number of winning lines: {total_line_won_count}")
+        print(Fore.GREEN + f"\nYou have just won ${total_win_amount}")  
+        print(Style.RESET_ALL)
 
     remaining_balance = deposit_amount - (number_of_lines * bet_on_each_line)
 
@@ -143,8 +148,7 @@ def main():
     total_bet = get_number_of_lines_call * bet_on_each_line_call
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
     new_balance = float(slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call))
-
-
+    
 while(True):
     main()
     print("\nEnd of Text-Based Slot Machine Game")
