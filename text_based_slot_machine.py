@@ -63,17 +63,37 @@ def slot_machine_algorithm(number_of_lines):
                     "J" : 4 * COL_COUNT * number_of_lines
                     }
     
+    # Creatign an array of all symbols w.r.t number of lines and columns 
     all_symbols = []
     for symbol, symbol_count in symbol_count_dict.items():
         for _ in range(symbol_count):
             all_symbols.append(symbol)
     print("All Symbols Array = ", all_symbols)
 
+    # Creating a 2D matrix of slot machine w.r.t number of lines and columns
     slot_machine_row = number_of_lines
     slot_machine_col = COL_COUNT
 
     slot_machine_matrix = [[0 for col in range(slot_machine_col)] for row in range(slot_machine_row)]
-    print("Symbol Machine = ", slot_machine_matrix[0:number_of_lines][:])
+    print("Symbol Machine = ", slot_machine_matrix[:][:])
+
+    for i in range(slot_machine_row):
+        for j in range(slot_machine_col):
+            slot_machine_matrix[i][j] = r.choice(all_symbols) 
+            
+    # Checking the winning scenario      
+    lines_won = 0  
+    for i in range(slot_machine_row):
+        if slot_machine_matrix[i][:] == "A":
+            print("You Won!")
+        if slot_machine_matrix[i][:] == "K":
+            print("You Won!")
+        if slot_machine_matrix[i][:] == "Q":
+            print("You Won!")        
+        if slot_machine_matrix[i][:] == "J":
+            print("You Won!")
+
+    print(slot_machine_matrix)
 
     pass
 
@@ -89,4 +109,6 @@ def main():
     # PART IN PROGRESS
     slot_machine_algorithm(get_number_of_lines_call)
 
-main()
+while(True):
+    main()
+    print("End of Prgoram")
