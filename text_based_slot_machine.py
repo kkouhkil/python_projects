@@ -1,5 +1,5 @@
-MIN_BET = float(1)
 MIN_DEPOSIT = float(5)
+MIN_BET = float(1)
 
 def get_deposit():
     deposit_satisfaction = bool(True)
@@ -40,10 +40,11 @@ def bet_on_each_line(deposit_amount, number_of_lines):
         bet_on_each_line = input("Enter the amount of bet you want to have for each line: $")
         try:
             float(bet_on_each_line)
-            if float(bet_on_each_line) >= MIN_BET and float(bet_on_each_line) * float(number_of_lines) <= deposit_amount:
+            max_bet = float(bet_on_each_line) * float(number_of_lines)
+            if float(bet_on_each_line) >= MIN_BET and max_bet <= deposit_amount:
                 bet_on_each_line_satisfaction = bool(False)
             else:
-                print("Wrong input!, Your overdraft is $" + str(deposit_amount - (float(bet_on_each_line) * float(number_of_lines))) + ", Not sufficient fund, Try again!")
+                print("Wrong input!, Your overdraft is $" + str(deposit_amount - max_bet) + ", Not sufficient fund, Try again!")
         except:
             print("Wrong input!, Enter the acceptable amonut in terms of numbers!")
             bet_on_each_line_satisfaction = bool(True)
@@ -54,8 +55,7 @@ def main():
     get_deposit_call = get_deposit()
     get_number_of_lines_call = get_number_of_lines()
     bet_on_each_line_call = bet_on_each_line(get_deposit_call, get_number_of_lines_call)
-    print("Your deposited amount is: $" + str(get_deposit_call))
-    print("Number of lines you selected to bet on is: " + str(get_number_of_lines_call) + " line(s)")
-    print("The bet amount you entered for each line is: $" + str(bet_on_each_line_call))
+    total_bet = get_number_of_lines_call * bet_on_each_line_call
+    print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
 
 main()
