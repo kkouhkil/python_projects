@@ -22,16 +22,16 @@ def get_deposit():
 
     return float(deposit_amount)
 
-def get_number_of_lines():
+def get_number_of_lines(deposit_amount):
     get_number_of_lines_satisfaction = bool(True)
     while(get_number_of_lines_satisfaction):
         number_of_lines = input("Enter the number of lines you want to bet please: ")
         try:
             int(number_of_lines)
-            if int(number_of_lines) > 0:
+            if int(number_of_lines) > 0 and int(number_of_lines) < int(deposit_amount):
                 get_number_of_lines_satisfaction = bool(False)
             else:
-                print("Wrong input!, Enter a positive amount greater than zero and try again!")
+                print(f"Wrong input!, Enter a positive amount between {0} and {int(deposit_amount)}, Try again!")
         except:
             print("Wrong input!, Enter the acceptable number of lines!")
             get_number_of_lines_satisfaction = bool(True)
@@ -129,16 +129,16 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     remaining_balance = deposit_amount - (number_of_lines * bet_on_each_line)
 
     if total_win_amount > 0:
-        print(f"Balance = ${remaining_balance + total_win_amount}")  
+        print(f"Balance = ${remaining_balance + total_win_amount}\n")  
     else:
-        print(f"Balance = ${remaining_balance}")  
+        print(f"Balance = ${remaining_balance}\n")  
     
     return float(remaining_balance)
 
 def main():
 
     get_deposit_call = get_deposit()
-    get_number_of_lines_call = get_number_of_lines()
+    get_number_of_lines_call = get_number_of_lines(get_deposit_call)
     bet_on_each_line_call = bet_on_each_line(get_deposit_call, get_number_of_lines_call)
     total_bet = get_number_of_lines_call * bet_on_each_line_call
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
@@ -147,4 +147,4 @@ def main():
 
 while(True):
     main()
-    print("\nEnd of Prgoram")
+    print("\nEnd of Text-Based Slot Machine Game")
