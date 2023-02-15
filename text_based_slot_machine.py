@@ -1,4 +1,5 @@
 MIN_BET = float(1)
+MIN_DEPOSIT = float(5)
 
 def get_deposit():
     deposit_satisfaction = bool(True)
@@ -6,10 +7,10 @@ def get_deposit():
         deposit_amount = input("Enter the amount of money you want to deposit: $")
         try:
             float(deposit_amount)
-            if float(deposit_amount) > 0:
+            if float(deposit_amount) >= MIN_DEPOSIT:
                 deposit_satisfaction = bool(False)
             else:
-                print("Wrong input!, Enter a positive amount greater than zero and try again!")
+                print("Wrong input!, Enter a minimum amount of $" + str(MIN_DEPOSIT) +  " and try again!")
         except:
             print("Wrong input!, Enter the acceptable amonut in terms of numbers!")
             deposit_satisfaction = bool(True)
@@ -48,8 +49,6 @@ def bet_on_each_line(deposit_amount, number_of_lines):
             bet_on_each_line_satisfaction = bool(True)
     
     return float(bet_on_each_line)
-
-
 
 def main():
     get_deposit_call = get_deposit()
