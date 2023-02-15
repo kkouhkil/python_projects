@@ -56,8 +56,12 @@ def greeting ():
     print(greeting_message)
     return greeting_message
 
-while(True):
-    greeting()
-    player_choice_call = get_player_choice()
-    computer_choice_call = get_computer_choice()
-    game_rule(player_choice_call,computer_choice_call)
+def rock_paper_scissors_game():
+
+    while(True):
+        greeting()
+        player_choice_call = get_player_choice()
+        computer_choice_call = get_computer_choice()
+        game_rule(player_choice_call,computer_choice_call)
+
+rock_paper_scissors_game()
