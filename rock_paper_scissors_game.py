@@ -54,16 +54,18 @@ def game_rule(player_choice,computer_choice):
  
     return game_result
     
-def greeting ():
-    greeting_message = "\nWelcome to the Rock-Paper-Scissors game!"
+def greeting (name):
+    greeting_message = "\nHi " + Fore.CYAN + name + Style.RESET_ALL + ", Welcome to the Rock-Paper-Scissors game!"
     print(greeting_message)
     return greeting_message
 
 def rock_paper_scissors_game():
+    name = input("\nEnter your name please: ")
+    greeting(name)
 
     while(True):
         print(Style.RESET_ALL) 
-        greeting()
+        
         player_choice_call = get_player_choice()
         print("\nYou chose:", player_choice_call)
         computer_choice_call = get_computer_choice()
