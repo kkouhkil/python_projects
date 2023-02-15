@@ -52,7 +52,7 @@ def bet_on_each_line(deposit_amount, number_of_lines):
         except:
             print("Wrong input!, Enter the acceptable amonut in terms of numbers!")
             bet_on_each_line_satisfaction = bool(True)
-    
+
     return float(bet_on_each_line)
 
 # PART IN PROGRESS
@@ -81,29 +81,58 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
         for j in range(slot_machine_col):
             slot_machine_matrix[i][j] = r.choice(all_symbols) 
             
+    print("\nGenerated line(s) by slot machine: ", slot_machine_matrix)
+
     # Checking the winning scenario      
-    line_count_won_A = 0
-    line_count_won_K = 0
-    line_count_won_Q = 0
-    line_count_won_J= 0  
+    line_A_won_count = 0
+    line_K_won_count = 0
+    line_Q_won_count = 0
+    line_J_won_count = 0
+
+    line_A_win_amonut = 0
+    line_K_win_amonut = 0
+    line_Q_win_amonut = 0
+    line_J_win_amonut = 0
+    total_win_amount = 0
+
     for i in range(slot_machine_row):
         if all(element == "A" for element in slot_machine_matrix[i][:]) == True:
-            line_count_won_A +=1
+            line_A_won_count +=1
         if all(element == "K" for element in slot_machine_matrix[i][:]) == True:
-            line_count_won_K +=1    
+            line_K_won_count +=1    
         if all(element == "Q" for element in slot_machine_matrix[i][:]) == True:
-            line_count_won_Q +=1
+            line_Q_won_count +=1
         if all(element == "J" for element in slot_machine_matrix[i][:]) == True:
-            line_count_won_J +=1      
+            line_J_won_count +=1      
 
-    print("\nGenerated line(s) by machine: ", slot_machine_matrix)
+    # Total number of line(s) won
+    total_line_won_count = line_A_won_count + line_K_won_count + line_Q_won_count + line_J_won_count
 
-    if line_count_won_A == 0 and  line_count_won_K == 0 and line_count_won_Q == 0 and line_count_won_J == 0:
+    # Total win amount
+    if line_A_won_count >= 1:
+        line_A_win_amonut += line_A_won_count * bet_on_each_line * 5
+    if line_K_won_count >= 1:
+        line_K_win_amonut += line_K_won_count * bet_on_each_line * 4   
+    if line_Q_won_count >= 1:
+        line_Q_win_amonut += line_Q_won_count * bet_on_each_line * 3
+    if line_J_won_count >= 1:
+        line_J_win_amonut += line_J_won_count * bet_on_each_line * 2
+
+    total_win_amount = line_A_win_amonut + line_K_win_amonut + line_Q_win_amonut + line_J_win_amonut
+    
+    if line_A_won_count == 0 and  line_K_won_count == 0 and line_Q_won_count == 0 and line_J_won_count == 0:
         print(f"\nUnfortunately you did not win anything. Better luck next time!")
 
-    if  line_count_won_A != 0 or  line_count_won_K != 0 or line_count_won_Q != 0 or line_count_won_J != 0:  
-        print(f"\nCongratulations!, Number of winning lines: {line_count_won_A + line_count_won_K + line_count_won_Q + line_count_won_J}")
-    # print(all(element == "J" for element in slot_machine_matrix[0][:]))
+    if  line_A_won_count != 0 or  line_K_won_count != 0 or line_Q_won_count != 0 or line_J_won_count != 0:  
+        print(f"\nCongratulations!, Number of winning lines: {total_line_won_count}")
+        print(f"\nYou have just won ${total_win_amount}")  
+
+    remaining_balance = deposit_amount - (number_of_lines * bet_on_each_line)
+
+    if total_win_amount > 0:
+        print(f"Balance = ${remaining_balance + total_win_amount}")  
+    else:
+        print(f"Balance = ${remaining_balance}")  
 
     pass
 
@@ -121,4 +150,4 @@ def main():
 
 while(True):
     main()
-    print("End of Prgoram")
+    print("\nEnd of Prgoram")
