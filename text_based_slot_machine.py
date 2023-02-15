@@ -140,6 +140,11 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     
     return float(remaining_balance)
 
+def greeting (name):
+    greeting_message = "\nHi " + Fore.CYAN + name + Style.RESET_ALL + ", Welcome to the Text-Based-Slot-Machine game!"
+    print(greeting_message)
+    return greeting_message    
+
 def main():
 
     get_deposit_call = get_deposit()
@@ -149,6 +154,9 @@ def main():
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
     new_balance = float(slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call))
     
+name = input("\nEnter your name please: ")
+greeting(name)    
+
 while(True):
     main()
     print("\nEnd of Text-Based Slot Machine Game")
