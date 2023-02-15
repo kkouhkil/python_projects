@@ -56,7 +56,7 @@ def bet_on_each_line(deposit_amount, number_of_lines):
     return float(bet_on_each_line)
 
 # PART IN PROGRESS
-def slot_machine_algorithm(number_of_lines):
+def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     symbol_count_dict = {"A" : 1 * COL_COUNT * number_of_lines, 
                     "K" : 2 * COL_COUNT * number_of_lines,
                     "Q" : 3 * COL_COUNT * number_of_lines,
@@ -68,24 +68,42 @@ def slot_machine_algorithm(number_of_lines):
     for symbol, symbol_count in symbol_count_dict.items():
         for _ in range(symbol_count):
             all_symbols.append(symbol)
-    print("All Symbols Array = ", all_symbols)
+    # print("All Symbols Array = ", all_symbols)
 
     # Creating a 2D matrix of slot machine w.r.t number of lines and columns
     slot_machine_row = number_of_lines
     slot_machine_col = COL_COUNT
 
     slot_machine_matrix = [[0 for col in range(slot_machine_col)] for row in range(slot_machine_row)]
-    print("Symbol Machine = ", slot_machine_matrix[:][:])
+    # print("Symbol Machine = ", slot_machine_matrix[:][:])
 
     for i in range(slot_machine_row):
         for j in range(slot_machine_col):
             slot_machine_matrix[i][j] = r.choice(all_symbols) 
             
     # Checking the winning scenario      
-    lines_won = 0  
+    line_count_won_A = 0
+    line_count_won_K = 0
+    line_count_won_Q = 0
+    line_count_won_J= 0  
+    for i in range(slot_machine_row):
+        if all(element == "A" for element in slot_machine_matrix[i][:]) == True:
+            line_count_won_A +=1
+        if all(element == "K" for element in slot_machine_matrix[i][:]) == True:
+            line_count_won_K +=1    
+        if all(element == "Q" for element in slot_machine_matrix[i][:]) == True:
+            line_count_won_Q +=1
+        if all(element == "J" for element in slot_machine_matrix[i][:]) == True:
+            line_count_won_J +=1      
 
-    print(slot_machine_matrix)
-    print(all(element == "J" for element in slot_machine_matrix[0][:]))
+    print("\nGenerated line(s) by machine: ", slot_machine_matrix)
+
+    if line_count_won_A == 0 and  line_count_won_K == 0 and line_count_won_Q == 0 and line_count_won_J == 0:
+        print(f"\nUnfortunately you did not win anything. Better luck next time!")
+
+    if  line_count_won_A != 0 or  line_count_won_K != 0 or line_count_won_Q != 0 or line_count_won_J != 0:  
+        print(f"\nCongratulations!, Number of winning lines: {line_count_won_A + line_count_won_K + line_count_won_Q + line_count_won_J}")
+    # print(all(element == "J" for element in slot_machine_matrix[0][:]))
 
     pass
 
@@ -99,7 +117,7 @@ def main():
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
 
     # PART IN PROGRESS
-    slot_machine_algorithm(get_number_of_lines_call)
+    slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call)
 
 while(True):
     main()
