@@ -1,10 +1,14 @@
+import random as r
+
 MIN_DEPOSIT = float(5)
 MIN_BET = float(1)
+
+COL_COUNT = 3
 
 def get_deposit():
     deposit_satisfaction = bool(True)
     while(deposit_satisfaction):
-        deposit_amount = input("Enter the amount of money you want to deposit: $")
+        deposit_amount = input("\nEnter the amount of money you want to deposit: $")
         try:
             float(deposit_amount)
             if float(deposit_amount) >= MIN_DEPOSIT:
@@ -51,11 +55,38 @@ def bet_on_each_line(deposit_amount, number_of_lines):
     
     return float(bet_on_each_line)
 
+# PART IN PROGRESS
+def slot_machine_algorithm(number_of_lines):
+    symbol_count_dict = {"A" : 1 * COL_COUNT * number_of_lines, 
+                    "K" : 2 * COL_COUNT * number_of_lines,
+                    "Q" : 3 * COL_COUNT * number_of_lines,
+                    "J" : 4 * COL_COUNT * number_of_lines
+                    }
+    
+    all_symbols = []
+    for symbol, symbol_count in symbol_count_dict.items():
+        for _ in range(symbol_count):
+            all_symbols.append(symbol)
+    print("All Symbols Array = ", all_symbols)
+
+    slot_machine_row = number_of_lines
+    slot_machine_col = COL_COUNT
+
+    slot_machine_matrix = [[0 for col in range(slot_machine_col)] for row in range(slot_machine_row)]
+    print("Symbol Machine = ", slot_machine_matrix[0:number_of_lines][:])
+
+    pass
+
+
 def main():
+
     get_deposit_call = get_deposit()
     get_number_of_lines_call = get_number_of_lines()
     bet_on_each_line_call = bet_on_each_line(get_deposit_call, get_number_of_lines_call)
     total_bet = get_number_of_lines_call * bet_on_each_line_call
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
+
+    # PART IN PROGRESS
+    slot_machine_algorithm(get_number_of_lines_call)
 
 main()
