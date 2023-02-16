@@ -86,8 +86,23 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     for i in range(slot_machine_row):
         for j in range(slot_machine_col):
             slot_machine_matrix[i][j] = r.choice(all_symbols) 
-            
-    print("\nGenerated line(s) by slot machine: ", slot_machine_matrix)
+
+    print("\nGenerated line(s) by slot machine: ")        
+    for i in range(slot_machine_row):  
+        if  all(element == "A" for element in slot_machine_matrix[i][:]) == True:
+            print(f"\n{Fore.GREEN}{slot_machine_matrix[i][:]}")
+            print(Style.RESET_ALL) 
+        if  all(element == "K" for element in slot_machine_matrix[i][:]) == True:
+            print(f"\n{Fore.GREEN}{slot_machine_matrix[i][:]}")
+            print(Style.RESET_ALL)  
+        if  all(element == "Q" for element in slot_machine_matrix[i][:]) == True:
+            print(f"\n{Fore.GREEN}{slot_machine_matrix[i][:]}")
+            print(Style.RESET_ALL) 
+        if  all(element == "J" for element in slot_machine_matrix[i][:]) == True:
+            print(f"\n{Fore.GREEN}{slot_machine_matrix[i][:]}")
+            print(Style.RESET_ALL)                               
+        else:
+            print(f"{slot_machine_matrix[i][:]}")
 
     # Checking the winning scenario      
     line_A_won_count = 0
