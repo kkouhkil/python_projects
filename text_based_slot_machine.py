@@ -6,6 +6,7 @@ MIN_BET = float(1)
 
 COL_COUNT = 3
 
+# Asking for player's deposit
 def get_deposit():
     deposit_satisfaction = bool(True)
     while(deposit_satisfaction):
@@ -23,6 +24,7 @@ def get_deposit():
 
     return float(deposit_amount)
 
+# Asking for number of lines to play
 def get_number_of_lines(deposit_amount):
     get_number_of_lines_satisfaction = bool(True)
     while(get_number_of_lines_satisfaction):
@@ -39,6 +41,7 @@ def get_number_of_lines(deposit_amount):
 
     return int(number_of_lines)
 
+# Asking for the amount of bet for each line
 def bet_on_each_line(deposit_amount, number_of_lines):
     bet_on_each_line_satisfaction = bool(True)
     while(bet_on_each_line_satisfaction):
@@ -56,6 +59,7 @@ def bet_on_each_line(deposit_amount, number_of_lines):
 
     return float(bet_on_each_line)
 
+# Defining the Text-Based_Slot_Machine alogrithm
 def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     print(Style.RESET_ALL)
 
@@ -140,11 +144,13 @@ def slot_machine_algorithm(number_of_lines, bet_on_each_line, deposit_amount):
     
     return float(remaining_balance)
 
+# Greeting the user and asking for his/her name
 def greeting (name):
     greeting_message = "\nHi " + Fore.CYAN + name + Style.RESET_ALL + ", Welcome to the Text-Based-Slot-Machine game!"
     print(greeting_message)
     return greeting_message    
 
+# Defining the main game function
 def main():
 
     get_deposit_call = get_deposit()
@@ -154,6 +160,7 @@ def main():
     print(f"\nTotal deposit = ${get_deposit_call}\nNumber of line(s) = {get_number_of_lines_call} \nBet for each line = ${bet_on_each_line_call} \nTotal bet = ${total_bet} \nBalance = ${get_deposit_call - total_bet}")
     new_balance = float(slot_machine_algorithm(get_number_of_lines_call, bet_on_each_line_call, get_deposit_call))
     
+# Calling the greet and game functions    
 name = input("\nEnter your name please: ")
 greeting(name)    
 
