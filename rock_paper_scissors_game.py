@@ -1,6 +1,7 @@
 import random as r
 from colorama import Fore, Style
 
+# Getting player choice
 def get_player_choice():
     player_choise_satisfaction = True
 
@@ -20,12 +21,14 @@ def get_player_choice():
 
     return player_choice
 
+# Getting computer choice
 def get_computer_choice():
     computer_choice_list = ["Rock", "Paper", "Scissors"]
     computer_choice = r.choice(computer_choice_list)
 
     return computer_choice
 
+# Defining the game rule
 def game_rule(player_choice,computer_choice):
 
     if player_choice == "Rock":
@@ -54,11 +57,13 @@ def game_rule(player_choice,computer_choice):
  
     return game_result
     
+# Greeting the user and asking for his/her name    
 def greeting (name):
     greeting_message = "\nHi " + Fore.CYAN + name + Style.RESET_ALL + ", Welcome to the Rock-Paper-Scissors game!"
     print(greeting_message)
     return greeting_message
 
+# Defining the Rock-Paper-Scissors game function
 def rock_paper_scissors_game():
     name = input("\nEnter your name please: ")
     greeting(name)
@@ -73,4 +78,5 @@ def rock_paper_scissors_game():
         game_result = game_rule(player_choice_call,computer_choice_call)
         print("\nGame result:", game_result)
 
+# Calling the game function
 rock_paper_scissors_game()
