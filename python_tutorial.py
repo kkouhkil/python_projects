@@ -48,29 +48,6 @@ if mode_select == 2:
 
 # Problem No.3
 if mode_select == 3:
-    alphabet_list = ['f', 'a', 'e', 'g', 'd', 'e', 'g', 'd', 'c', 'e', 'b']
-    alphabet_list.sort()
-
-    alphabet_list_element_count = []
-    element_count_more_than_once = []
-    final_repeated_elements_list = []
-    final_repeated_elements_count = []
-
-
-    for i in range(len(alphabet_list)):
-        alphabet_list_element_count.append(alphabet_list.count(alphabet_list[i]))
-        if alphabet_list.count(alphabet_list[i]) > 1:
-                element_count_more_than_once.append(alphabet_list[i])
-
-
-    # for i in range (1, len(element_count_more_than_once)):
-    #     if element_count_more_than_once[i - 1] == element_count_more_than_once[i]:
-    #         final_repeated_elements_list.append(element_count_more_than_once[i])
-    #         final_repeated_elements_count.append(element_count_more_than_once.count(element_count_more_than_once[i]))
-
-        
-    print("Given alphabet list = ", *alphabet_list, sep = ' ')
-    print("Counted element(s) of the list = ", *element_count_more_than_once, sep = ' ')
-    # print("Times counted for each element = ", *final_repeated_elements_count, sep = ' ')
+    pass
 
     
