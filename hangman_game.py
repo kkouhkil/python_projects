@@ -47,7 +47,9 @@ while(True):
             if chosen_word[i].lower() == guess_letter:
                 guess_letter_list[i] = chosen_word[i].lower()
 
+        os.system('clear')
         print(f"\nWord to complete: ", *guess_letter_list, sep = ' ')
+        
         
     guess_word = ''
     for i in range(len(guess_letter_list)):
