@@ -1,6 +1,33 @@
 import random as r
 from colorama import Fore, Style
 
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
 # Getting player choice
 def get_player_choice():
     player_choise_satisfaction = True
@@ -68,13 +95,32 @@ def rock_paper_scissors_game():
     name = input("\nEnter your name please: ")
     greeting(name)
 
+    RPS_list = [rock, paper, scissors]
+
     while(True):
         print(Style.RESET_ALL) 
         
         player_choice_call = get_player_choice()
         print("\nYou chose:", player_choice_call)
+        if player_choice_call == "Rock":
+            print(RPS_list[0])
+
+        if player_choice_call == "Paper":
+            print(RPS_list[1]) 
+
+        if player_choice_call == "Scissors":
+            print(RPS_list[2])         
+
         computer_choice_call = get_computer_choice()
         print("\nComputer chose:", computer_choice_call)
+        if computer_choice_call == "Rock":
+            print(RPS_list[0])
+
+        if computer_choice_call == "Paper":
+            print(RPS_list[1]) 
+
+        if computer_choice_call == "Scissors":
+            print(RPS_list[2]) 
         game_result = game_rule(player_choice_call,computer_choice_call)
         print("\nGame result:", game_result)
 
