@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 logo = """
  ,adPPYba, ,adPPYYba,  ,adPPYba, ,adPPYba, ,adPPYYba, 8b,dPPYba,
 a8"     "" ""     `Y8 a8P_____88 I8[    "" ""     `Y8 88P'   "Y8
@@ -69,13 +71,17 @@ def encrypt_encrypt():
         text = input("Type your message for encryption: ")
         shift = input("Type the shift number: ")
         encrypted_text = encrypt(text, shift)
-        print(f"\nEncrypted text of \"{text}\" with ({shift}) shift(s) is: ", encrypted_text)
+        print(f"\nEncrypted text of \"{text}\" with ({shift}) shift(s) is:") 
+        print(Fore.RED + encrypted_text)
+        print(Style.RESET_ALL)
            
     elif direction == "decode":
         text = input("Type your message for decryption: ")
         shift = input("Type the shift number: ")
         decrypted_text = decrypt(text, shift)
-        print(f"\nDecrypted text of \"{text}\" with ({shift}) shift(s) is: ", decrypted_text)
+        print(f"\nDecrypted text of \"{text}\" with ({shift}) shift(s) is:") 
+        print(Fore.GREEN + decrypted_text)
+        print(Style.RESET_ALL)
 
 program_running_condition = True
 while(program_running_condition):
