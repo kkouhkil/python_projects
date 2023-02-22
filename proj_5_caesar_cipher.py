@@ -17,7 +17,9 @@ a8"     "" 88 88P'    "8a 88P'    "8a a8P_____88 88P'   "Y8
 """
 print(logo)
 
-alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
+alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 
+                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                 ' ', ',', ':', ';', '.', '?', '!','_','@',"\""]
 
 def encrypt(text, shift):
     text_length = len(text)
@@ -65,12 +67,12 @@ def encrypt_encrypt():
         print("Wrong input, type either 'encode' or 'decode' please!, Try again!")
 
     if direction == "encode":
-       text = input("Type your message for encryption: ").lower()
-       shift = input("Type the shift number: ")
-       encrypted_text = encrypt(text, shift)
-       print(f"\nEncrypted text of \"{text}\" with ({shift}) shift(s) is: ", encrypted_text)
+        text = input("Type your message for encryption: ")
+        shift = input("Type the shift number: ")
+        encrypted_text = encrypt(text, shift)
+        print(f"\nEncrypted text of \"{text}\" with ({shift}) shift(s) is: ", encrypted_text)
     elif direction == "decode":
-        text = input("Type your message for decryption: ").lower()
+        text = input("Type your message for decryption: ")
         shift = input("Type the shift number: ")
         decrypted_text = decrypt(text, shift)
         print(f"\nDecrypted text of \"{text}\" with ({shift}) shift(s) is: ", decrypted_text)
