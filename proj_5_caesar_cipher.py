@@ -19,7 +19,8 @@ print(logo)
 
 alphabet_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 
                  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                 ' ', ',',':', ';', '.', '?', '!','_','@',"\'","\""]
+                 '~','!','@','#','$','%','^','&','*','(',')','-','=','_','+','{','}','[',']','|','\\',';',':','\'','\"',',','.','<','>','?','/',' ',
+                 '0','1','2','3','4','5','6','7','8','9']
 
 def encrypt(text, shift):
     text_length = len(text)
@@ -62,23 +63,30 @@ def decrypt(text, shift):
     return decrypted_text
 
 def encrypt_encrypt():
-    direction = input("\nType 'encode' to encrypt and 'decode' to decrypt: ")
-    if direction != "encode" or direction != "decode":
-        print("Wrong input, type either 'encode' or 'decode' please!, Try again!")
+    direction = input("\nType 'encode' to encrypt and 'decode' to decrypt: ").lower()
 
     if direction == "encode":
         text = input("Type your message for encryption: ")
         shift = input("Type the shift number: ")
         encrypted_text = encrypt(text, shift)
         print(f"\nEncrypted text of \"{text}\" with ({shift}) shift(s) is: ", encrypted_text)
+           
     elif direction == "decode":
         text = input("Type your message for decryption: ")
         shift = input("Type the shift number: ")
         decrypted_text = decrypt(text, shift)
         print(f"\nDecrypted text of \"{text}\" with ({shift}) shift(s) is: ", decrypted_text)
 
-while(True):
+program_running_condition = True
+while(program_running_condition):
     encrypt_encrypt()
+    carry_on_condition = input("\nDo you want to go on with text encryption/decryption? (yes/no) ").lower()
+    if carry_on_condition == "yes":
+        continue
+    else:
+        program_running_condition = False
+
+print("\nGoodbye!\n")
 
 
 
