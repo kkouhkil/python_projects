@@ -36,15 +36,28 @@ operations = {
     "/": div
 }
 
-num1 = float(input("What's the first number? "))
-num2 = float(input("What's the second number? "))
+count = 1
+num = float(input(f"What's you No.{count}? "))
 
 for key in operations:
     print(key)
 
-operation_symbol = input("Pick an operation from the list above: ")
+calculation_continue = True
+while(calculation_continue):
+    count = count + 1
+    operation_symbol = input("Pick an operation from the list above: ")
 
-calculation_function = operations[operation_symbol]
-answer = calculation_function(num1, num2)
+    num_rest = float(input(f"What's your No.{count}? "))
 
-print(f"{num1} {operation_symbol} {num2} = {answer}")  
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num, num_rest)
+
+    print(f"{num} {operation_symbol} {num_rest} = {answer}")  
+
+    user_ask = input(f"Type 'y' to continue calculation with {answer}, or type 'n' to exit: " )
+    if user_ask == 'y':
+        num = answer
+    else:
+        calculation_continue = False
+
+
