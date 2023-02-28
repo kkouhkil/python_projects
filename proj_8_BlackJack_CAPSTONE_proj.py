@@ -107,7 +107,6 @@ def computer_card_deal(computer_count, computer_function_count):
     print("Upated computer count = ", computer_count)
     return computer_count    
 
-
 player_card_deal(player_count_result, 0)
 computer_card_deal(computer_count_result, 0)
 
