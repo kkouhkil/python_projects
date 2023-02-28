@@ -15,7 +15,7 @@ logo = """
 |_____________________|
 """
 
-# print(logo)
+print(logo)
 
 def add (num1, num2):
     return num1 + num2
@@ -36,28 +36,31 @@ operations = {
     "/": div
 }
 
-count = 1
-num = float(input(f"What's you No.{count}? "))
+def calculator():
+    count = 1
+    num = float(input(f"What's you No.{count}? "))
 
-for key in operations:
-    print(key)
+    for key in operations:
+        print(key)
 
-calculation_continue = True
-while(calculation_continue):
-    count = count + 1
-    operation_symbol = input("Pick an operation from the list above: ")
+    calculation_continue = True
+    while(calculation_continue):
+        count = count + 1
+        operation_symbol = input("Pick an operation from the list above: ")
 
-    num_rest = float(input(f"What's your No.{count}? "))
+        num_rest = float(input(f"What's your No.{count}? "))
 
-    calculation_function = operations[operation_symbol]
-    answer = calculation_function(num, num_rest)
+        calculation_function = operations[operation_symbol]
+        answer = float(calculation_function(num, num_rest))
 
-    print(f"{num} {operation_symbol} {num_rest} = {answer}")  
+        print(f"{num} {operation_symbol} {num_rest} = {answer}")  
 
-    user_ask = input(f"Type 'y' to continue calculation with {answer}, or type 'n' to exit: " )
-    if user_ask == 'y':
-        num = answer
-    else:
-        calculation_continue = False
+        user_ask = input(f"Type 'y' to continue calculation with {answer}, or type 'n' to start a new calculation: " )
+        if user_ask == 'y':
+            num = answer
+        else:
+            calculation_continue = False
+            calculator()
 
+calculator()
 
