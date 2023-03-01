@@ -43,7 +43,6 @@ def initial_player_card_deal():
     print("\nPlayer choices: ", player_list)
     # print("Player card list after starting the game: ", player_card_choice_list)
     print("Player count = ", player_count_total)
-    print("\n")
 
     return player_count_total
 
@@ -188,7 +187,7 @@ def black_jack_game():
         print(f"Computer final count: {Fore.RED}{result_computer}")
         print(Style.RESET_ALL)
 
-    if  result_player[0] <= 21:   
+    if  result_player[0] <= 21 and result_computer <= 21:   
         if result_player[0] == 21 and result_computer != 21:
             print(Fore.GREEN + "\nBlackJack!, You win!\n")
             print(Style.RESET_ALL)
@@ -201,7 +200,14 @@ def black_jack_game():
         elif result_player[0] < result_computer:
                 print(Fore.RED + "\nYou lose!\n")
                 print(Style.RESET_ALL)
-    else:
+    elif  result_player[0] <= 21 and result_computer > 21:
+        if result_player[0] == 21:  
+            print(Fore.GREEN + "\nBlackJack!, You win!\n")
+            print(Style.RESET_ALL)
+        else:
+            print(Fore.GREEN + "\nYou Win!\n")
+            print(Style.RESET_ALL)
+    elif result_player[0] > 21:
         print(Fore.RED + "\nYou lose!\n")      
         print(Style.RESET_ALL)      
     
@@ -209,5 +215,18 @@ def black_jack_game():
 
     return result_player[0], result_computer
 
-final_result = black_jack_game()
+def game():
+    print(player_card_choice_list)
+    print(computer_card_choice_list)
+    black_jack_game()
+    game_play_condition = input("Do you want to go for another round? ('yes' or 'no') ")
+    if game_play_condition == "yes":
+        player_list.clear()
+        computer_list.clear()        
+        game()
+
+    else:
+        print("Good Bye!, Thanks for playing!")
+
+game()                
 
