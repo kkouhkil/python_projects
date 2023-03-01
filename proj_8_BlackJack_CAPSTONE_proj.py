@@ -62,9 +62,6 @@ def initial_computer_card_deal():
 
     return computer_count_total
 
-player_count_result = initial_player_card_deal()
-computer_count_result = initial_computer_card_deal()
-
 def player_card_deal(player_count, player_function_count):
     index = 2
 
@@ -107,9 +104,72 @@ def computer_card_deal(computer_count, computer_function_count):
     print("Upated computer count = ", computer_count)
     return computer_count    
 
-player_card_deal(player_count_result, 0)
-computer_card_deal(computer_count_result, 0)
+def player_black_jack_game():
 
+    player_function_count = 0
+    player_count_update = 0
+
+    player_count_result = initial_player_card_deal()
+    computer_count_result = initial_computer_card_deal()
+
+    if player_count_result == 21 and computer_count_result != 21:
+        print("BlackJak!, You win!")
+    elif player_count_result == 21 and computer_count_result == 21:
+        print("It's a Draw!, You both win!")
+
+    if player_count_result < 21:
+        while(player_count_update < 21):
+            hit_stand_condition = input("Do you want to 'Hit' or 'Stand'? ").title()
+            if hit_stand_condition == "Hit":
+                player_count_update = player_card_deal(player_count_result, player_function_count)
+                player_count_result = player_count_update
+                player_function_count += 1
+            else:
+                player_count_update = player_count_result                    
+                break
+
+    return player_count_update, computer_count_result
+
+def computer_black_jack_game(computer_count_result):
+
+    computer_function_count = 0
+    computer_count_update = 0
+
+    computer_list = [16, 17, 18, 19, 20, 21, 22]
+    while_conditon_choice = r.choice(computer_list)
+    print(while_conditon_choice)
+
+    while(computer_count_update <= while_conditon_choice):
+
+        computer_count_update = computer_card_deal(computer_count_result, computer_function_count)
+        computer_count_result = computer_count_update
+        computer_function_count += 1
+
+        if computer_count_update >= computer_list[0] and computer_count_update <= computer_list[6]:
+            break
+    
+    return computer_count_update
+
+def black_jack_game():
+    result_player = player_black_jack_game()
+    result_computer = computer_black_jack_game(result_player[1])
+
+    if  result_player[0] <= 21:   
+        if result_player[0] == 21 and result_computer != 21:
+            print("BlackJak!, You win!")
+        elif result_player[0] == 21 and result_computer == 21:
+            print("It's a Draw!, You both win!")
+        elif result_player[0] > result_computer:
+            print("You Win!")
+        elif result_player[0] < result_computer:
+                print("You lose!")
+    else:
+        print("You lose!")            
+    
+    print("Player Result in the end: ", result_player[0])
+    print("Computer Result in the end: ", result_computer)
+
+black_jack_game()
 
 
 
