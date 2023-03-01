@@ -14,8 +14,13 @@ logo = """
 
 print(logo)
 
-player_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
-computer_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+def initial_list():
+    player_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+    computer_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
+    
+    return player_card_choice_list, computer_card_choice_list
+
+initial_list_player_computer = initial_list()
 
 player_list = []
 computer_list = []
@@ -23,22 +28,19 @@ computer_list = []
 def initial_player_card_deal():
     player_count_total = 0
 
-    # print("\nCard list before starting the game: ", player_card_choice_list)
-
     for i in range(0,2):
 
-        player_random_card = r.choice(player_card_choice_list)
+        player_random_card = r.choice(initial_list_player_computer[0])
 
         if player_random_card == 1:
-           player_card_choice_list.remove(player_random_card)
-           player_card_choice_list.remove('A') 
+           initial_list_player_computer[0].remove(player_random_card)
+           initial_list_player_computer[0].remove('A') 
         elif player_random_card == 'A':
-            player_card_choice_list.remove(player_random_card)
-            player_card_choice_list.remove(1)  
+            initial_list_player_computer[0].remove(player_random_card)
+            initial_list_player_computer[0].remove(1)  
         else:
-            player_card_choice_list.remove(player_random_card)
+            initial_list_player_computer[0].remove(player_random_card)
 
-        # player_card_choice_list.remove(player_random_card)
         player_list.append(player_random_card)
 
     for i in range(len(player_list)):
@@ -63,18 +65,17 @@ def initial_computer_card_deal():
     computer_count_total = 0
 
     for i in range(0,2):
-        computer_random_card = r.choice(computer_card_choice_list)
+        computer_random_card = r.choice(initial_list_player_computer[1])
 
         if computer_random_card == 1:
-           computer_card_choice_list.remove(computer_random_card)
-           computer_card_choice_list.remove('A') 
+           initial_list_player_computer[1].remove(computer_random_card)
+           initial_list_player_computer[1].remove('A') 
         elif computer_random_card == 'A':
-            computer_card_choice_list.remove(computer_random_card)
-            computer_card_choice_list.remove(1)  
+            initial_list_player_computer[1].remove(computer_random_card)
+            initial_list_player_computer[1].remove(1)  
         else:
-            computer_card_choice_list.remove(computer_random_card)
+            initial_list_player_computer[1].remove(computer_random_card)
         
-        # computer_card_choice_list.remove(computer_random_card)
         computer_list.append(computer_random_card)
 
     for i in range(len(computer_list)):
@@ -90,16 +91,14 @@ def initial_computer_card_deal():
         computer_count_total += computer_list[i]
 
     print("Computer choice: ", r.choice(computer_list))
-    # print("Computer card list after starting the game: ", computer_card_choice_list)
-    # print("Computer count = ", computer_count_total)
 
     return computer_count_total
 
 def player_card_deal(player_count, player_function_count):
     index = 2
 
-    player_random_card = r.choice(player_card_choice_list)
-    player_card_choice_list.remove(player_random_card)
+    player_random_card = r.choice(initial_list_player_computer[0])
+    initial_list_player_computer[0].remove(player_random_card)
     player_list.append(player_random_card)
 
     if player_list[index + player_function_count] == 'J':
@@ -119,8 +118,8 @@ def player_card_deal(player_count, player_function_count):
 def computer_card_deal(computer_count, computer_function_count):
     index = 2
 
-    computer_random_card = r.choice(computer_card_choice_list)
-    computer_card_choice_list.remove(computer_random_card)
+    computer_random_card = r.choice(initial_list_player_computer[1])
+    initial_list_player_computer[1].remove(computer_random_card)
     computer_list.append(computer_random_card)
 
     if computer_list[index + computer_function_count] == 'J':
@@ -133,8 +132,7 @@ def computer_card_deal(computer_count, computer_function_count):
         computer_list[index + computer_function_count] = 11  
 
     computer_count += computer_list[index + computer_function_count]
-    # print("\nUpdated computer choices: ", computer_list)
-    # print("\nUpated computer count = ", computer_count)
+
     return computer_count    
 
 def player_black_jack_game():
@@ -227,8 +225,9 @@ def black_jack_game():
     return result_player[0], result_computer
 
 def game():
-    # print(player_card_choice_list)
-    # print(computer_card_choice_list)
+    initial_list_player_computer = initial_list()
+    print(initial_list_player_computer[0])
+    print(initial_list_player_computer[1])
     black_jack_game()
     game_play_condition = input("Do you want to go for another round? ('yes' or 'no') ")
     if game_play_condition == "yes":
@@ -241,4 +240,3 @@ def game():
         print("Good Bye!, Thanks for playing!")
 
 game()                
-
