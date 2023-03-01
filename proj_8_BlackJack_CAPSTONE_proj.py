@@ -1,6 +1,19 @@
 import random as r
 from colorama import Fore, Style
 
+logo = """
+.------.            _     _            _    _            _
+|A_  _ |.          | |   | |          | |  (_)          | |
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   <
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |
+      `------'                           |__/
+"""
+
+print(logo)
+
 player_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 computer_card_choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 
@@ -198,8 +211,8 @@ def black_jack_game():
             print(Fore.GREEN + "\nYou Win!\n")
             print(Style.RESET_ALL)
         elif result_player[0] < result_computer:
-                print(Fore.RED + "\nYou lose!\n")
-                print(Style.RESET_ALL)
+            print(Fore.RED + "\nYou lose!\n")
+            print(Style.RESET_ALL)
     elif  result_player[0] <= 21 and result_computer > 21:
         if result_player[0] == 21:  
             print(Fore.GREEN + "\nBlackJack!, You win!\n")
@@ -211,18 +224,17 @@ def black_jack_game():
         print(Fore.RED + "\nYou lose!\n")      
         print(Style.RESET_ALL)      
     
-
-
     return result_player[0], result_computer
 
 def game():
-    print(player_card_choice_list)
-    print(computer_card_choice_list)
+    # print(player_card_choice_list)
+    # print(computer_card_choice_list)
     black_jack_game()
     game_play_condition = input("Do you want to go for another round? ('yes' or 'no') ")
     if game_play_condition == "yes":
         player_list.clear()
-        computer_list.clear()        
+        computer_list.clear()   
+        
         game()
 
     else:
