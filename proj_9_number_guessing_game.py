@@ -66,8 +66,6 @@ def player_number_guess(computer_guess):
     if player_number != computer_guess:
         print(f"\n{Fore.RED}You lose!, (your number = {player_number}, computer number = {computer_guess}), Better luck next time!{Style.RESET_ALL}\n")
 
-                
-
 def number_guessing_game():
     greeting()
 
