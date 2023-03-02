@@ -244,6 +244,6 @@ def game():
         game()
 
     else:
-        print("Good Bye!, Thanks for playing!")
+        print("Goodbye!, Thanks for playing!")
 
 game()                
