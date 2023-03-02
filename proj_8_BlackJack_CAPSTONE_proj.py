@@ -209,6 +209,9 @@ def black_jack_game():
         elif result_player[0] == 21 and result_computer == 21:
             print(Fore.YELLOW + "\nIt's a Draw!, You both win!\n")
             print(Style.RESET_ALL)
+        elif result_player[0] == result_computer:
+            print(Fore.YELLOW + "\nIt's a Draw!, You both win!\n")
+            print(Style.RESET_ALL)
         elif result_player[0] > result_computer:
             print(Fore.GREEN + "\nYou Win!\n")
             print(Style.RESET_ALL)
@@ -230,8 +233,8 @@ def black_jack_game():
 
 def game():
     initial_list_player_computer = initial_list()
-    print(initial_list_player_computer[0])
-    print(initial_list_player_computer[1])
+    # print(initial_list_player_computer[0])
+    # print(initial_list_player_computer[1])
     black_jack_game()
     game_play_condition = input("Do you want to go for another round? ('yes' or 'no') ")
     if game_play_condition == "yes":
