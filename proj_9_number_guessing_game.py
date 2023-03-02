@@ -67,6 +67,19 @@ def player_number_guess(computer_guess):
         print(f"\n{Fore.RED}You lose!, (your number = {player_number}, computer number = {computer_guess}), Better luck next time!{Style.RESET_ALL}\n")
 
                 
-greeting()
-computer_number = computer_number_guessing()
-player_number_guess(computer_number)
+
+def number_guessing_game():
+    greeting()
+
+    game_continue_condition = True
+    while(game_continue_condition):
+        computer_number = computer_number_guessing()
+        player_number_guess(computer_number)
+        ask_player = input("Do you want to give the game another try: ('yes' or 'no') ")
+        if ask_player == "yes":
+            continue
+        else:
+            print(f"\n{Fore.YELLOW}Goodbye!, See you soon again!{Style.RESET_ALL}")
+            game_continue_condition = False
+
+number_guessing_game()
