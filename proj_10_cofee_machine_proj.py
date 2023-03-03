@@ -1,3 +1,7 @@
+"""Author: Keyhan Kouhkiloui Babarahmati
+           PhD in Robotics and AI
+"""
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -25,10 +29,15 @@ MENU = {
 }
 profit = 0
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "Water": 300,
+    "Milk": 200,
+    "Coffee": 100,
+    "Money": float(0)
 }
 
-print(MENU)
-print(resources)
+def report():
+    pass
+
+report()
+# print(MENU)
+# print(resources)
