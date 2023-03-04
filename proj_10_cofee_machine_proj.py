@@ -43,11 +43,14 @@ def espresso_order():
 
     if resources["Water (ml)"] >= espresso_required_water and resources["Coffee (g)"] >= espresso_required_coffee:
         espresso_coin_counter = coin_counter()
-        print("Enjoy your espresso!")
-        print(f'Your change is: {espresso_coin_counter - espresso_cost}')
-        resources["Water (ml)"] = resources["Water (ml)"] - espresso_required_water
-        resources["Coffee (g)"] = resources["Coffee (g)"] - espresso_required_coffee
-        resources["Money ($)"] = resources["Money ($)"] + espresso_cost
+        if espresso_coin_counter < espresso_cost:
+            print("Sorry, that's not enough money. Money refunded!")
+        else:
+            print("Enjoy your espresso!")
+            print(f'Your change is: {espresso_coin_counter - espresso_cost}')
+            resources["Water (ml)"] = resources["Water (ml)"] - espresso_required_water
+            resources["Coffee (g)"] = resources["Coffee (g)"] - espresso_required_coffee
+            resources["Money ($)"] = resources["Money ($)"] + espresso_cost
     else:
         if resources["Water (ml)"] < espresso_required_water:
             print("Sorry, there is no enough water!")
@@ -64,12 +67,15 @@ def latte_order():
     if resources["Water (ml)"] >= latte_required_water and resources["Milk (ml)"] >= latte_required_milk and \
             resources["Coffee (g)"] >= latte_required_coffee:
         latte_coin_counter = coin_counter()
-        print("Enjoy your latte!")
-        print(f'Your change is: {latte_coin_counter - latte_cost}')
-        resources["Water (ml)"] = resources["Water (ml)"] - latte_required_water
-        resources["Milk (ml)"] = resources["Milk (ml)"] - latte_required_milk
-        resources["Coffee (g)"] = resources["Coffee (g)"] - latte_required_coffee
-        resources["Money ($)"] = resources["Money ($)"] + latte_cost
+        if latte_coin_counter < latte_cost:
+            print("Sorry, that's not enough money. Money refunded!")
+        else:
+            print("Enjoy your latte!")
+            print(f'Your change is: {latte_coin_counter - latte_cost}')
+            resources["Water (ml)"] = resources["Water (ml)"] - latte_required_water
+            resources["Milk (ml)"] = resources["Milk (ml)"] - latte_required_milk
+            resources["Coffee (g)"] = resources["Coffee (g)"] - latte_required_coffee
+            resources["Money ($)"] = resources["Money ($)"] + latte_cost
     else:
         if resources["Water (ml)"] < latte_required_water:
             print("Sorry, there is no enough water!")
@@ -88,12 +94,15 @@ def cappuccino_order():
     if resources["Water (ml)"] >= cappuccino_required_water and resources["Milk (ml)"] >= cappuccino_required_milk and \
             resources["Coffee (g)"] >= cappuccino_required_coffee:
         cappuccino_coin_counter = coin_counter()
-        print("Enjoy your latte!")
-        print(f'Your change is: {cappuccino_coin_counter - cappuccino_cost}')
-        resources["Water (ml)"] = resources["Water (ml)"] - cappuccino_required_water
-        resources["Milk (ml)"] = resources["Milk (ml)"] - cappuccino_required_milk
-        resources["Coffee (g)"] = resources["Coffee (g)"] - cappuccino_required_coffee
-        resources["Money ($)"] = resources["Money ($)"] + cappuccino_cost
+        if cappuccino_coin_counter < cappuccino_cost:
+            print("Sorry, that's not enough money. Money refunded!")
+        else:
+            print("Enjoy your cappuccino!")
+            print(f'Your change is: {cappuccino_coin_counter - cappuccino_cost}')
+            resources["Water (ml)"] = resources["Water (ml)"] - cappuccino_required_water
+            resources["Milk (ml)"] = resources["Milk (ml)"] - cappuccino_required_milk
+            resources["Coffee (g)"] = resources["Coffee (g)"] - cappuccino_required_coffee
+            resources["Money ($)"] = resources["Money ($)"] + cappuccino_cost
     else:
         if resources["Water (ml)"] < cappuccino_required_water:
             print("Sorry, there is no enough water!")
