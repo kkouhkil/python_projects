@@ -47,7 +47,7 @@ def espresso_order():
             print("Sorry, that's not enough money. Money refunded!")
         else:
             print("Enjoy your espresso!")
-            print(f'Your change is: {espresso_coin_counter - espresso_cost}')
+            print(f'Your change is: {round(espresso_coin_counter - espresso_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - espresso_required_water
             resources["Coffee (g)"] = resources["Coffee (g)"] - espresso_required_coffee
             resources["Money ($)"] = resources["Money ($)"] + espresso_cost
@@ -71,7 +71,7 @@ def latte_order():
             print("Sorry, that's not enough money. Money refunded!")
         else:
             print("Enjoy your latte!")
-            print(f'Your change is: {latte_coin_counter - latte_cost}')
+            print(f'Your change is: {round(latte_coin_counter - latte_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - latte_required_water
             resources["Milk (ml)"] = resources["Milk (ml)"] - latte_required_milk
             resources["Coffee (g)"] = resources["Coffee (g)"] - latte_required_coffee
@@ -98,7 +98,7 @@ def cappuccino_order():
             print("Sorry, that's not enough money. Money refunded!")
         else:
             print("Enjoy your cappuccino!")
-            print(f'Your change is: {cappuccino_coin_counter - cappuccino_cost}')
+            print(f'Your change is: {round(cappuccino_coin_counter - cappuccino_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - cappuccino_required_water
             resources["Milk (ml)"] = resources["Milk (ml)"] - cappuccino_required_milk
             resources["Coffee (g)"] = resources["Coffee (g)"] - cappuccino_required_coffee
