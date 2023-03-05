@@ -1,6 +1,7 @@
 """Author: Keyhan Kouhkiloui Babarahmati
            PhD in Robotics and AI
 """
+from colorama import Fore, Style
 
 MENU = {
     "espresso": {
@@ -44,18 +45,18 @@ def espresso_order():
     if resources["Water (ml)"] >= espresso_required_water and resources["Coffee (g)"] >= espresso_required_coffee:
         espresso_coin_counter = coin_counter()
         if espresso_coin_counter < espresso_cost:
-            print("Sorry, that's not enough money. Money refunded!")
+            print(f"{Fore.RED}Sorry, that's not enough money. Money refunded!{Style.RESET_ALL}")
         else:
-            print("Enjoy your espresso!")
+            print(f"{Fore.GREEN}Enjoy your espresso!{Style.RESET_ALL}")
             print(f'Your change is: {round(espresso_coin_counter - espresso_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - espresso_required_water
             resources["Coffee (g)"] = resources["Coffee (g)"] - espresso_required_coffee
             resources["Money ($)"] = resources["Money ($)"] + espresso_cost
     else:
         if resources["Water (ml)"] < espresso_required_water:
-            print("Sorry, there is no enough water!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough water!{Style.RESET_ALL}")
         elif resources["Coffee (g)"] < espresso_required_coffee:
-            print("Sorry, there is no enough coffee!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough coffee!{Style.RESET_ALL}")
 
 
 def latte_order():
@@ -68,9 +69,9 @@ def latte_order():
             resources["Coffee (g)"] >= latte_required_coffee:
         latte_coin_counter = coin_counter()
         if latte_coin_counter < latte_cost:
-            print("Sorry, that's not enough money. Money refunded!")
+            print(f"{Fore.RED}Sorry, that's not enough money. Money refunded!{Style.RESET_ALL}")
         else:
-            print("Enjoy your latte!")
+            print(f"{Fore.GREEN}Enjoy your latte!{Style.RESET_ALL}")
             print(f'Your change is: {round(latte_coin_counter - latte_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - latte_required_water
             resources["Milk (ml)"] = resources["Milk (ml)"] - latte_required_milk
@@ -78,11 +79,11 @@ def latte_order():
             resources["Money ($)"] = resources["Money ($)"] + latte_cost
     else:
         if resources["Water (ml)"] < latte_required_water:
-            print("Sorry, there is no enough water!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough water!{Style.RESET_ALL}")
         elif resources["Milk (ml)"] < latte_required_milk:
-            print("Sorry, there is no enough milk!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough milk!{Style.RESET_ALL}")
         elif resources["Coffee (g)"] < latte_required_coffee:
-            print("Sorry, there is no enough coffee!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough coffee!{Style.RESET_ALL}")
 
 
 def cappuccino_order():
@@ -95,9 +96,9 @@ def cappuccino_order():
             resources["Coffee (g)"] >= cappuccino_required_coffee:
         cappuccino_coin_counter = coin_counter()
         if cappuccino_coin_counter < cappuccino_cost:
-            print("Sorry, that's not enough money. Money refunded!")
+            print(f"{Fore.RED}Sorry, that's not enough money. Money refunded!{Style.RESET_ALL}")
         else:
-            print("Enjoy your cappuccino!")
+            print(f"{Fore.GREEN}Enjoy your cappuccino!{Style.RESET_ALL}")
             print(f'Your change is: {round(cappuccino_coin_counter - cappuccino_cost, 3)}')
             resources["Water (ml)"] = resources["Water (ml)"] - cappuccino_required_water
             resources["Milk (ml)"] = resources["Milk (ml)"] - cappuccino_required_milk
@@ -105,11 +106,11 @@ def cappuccino_order():
             resources["Money ($)"] = resources["Money ($)"] + cappuccino_cost
     else:
         if resources["Water (ml)"] < cappuccino_required_water:
-            print("Sorry, there is no enough water!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough water!{Style.RESET_ALL}")
         elif resources["Milk (ml)"] < cappuccino_required_milk:
-            print("Sorry, there is no enough milk!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough milk!{Style.RESET_ALL}")
         elif resources["Coffee (g)"] < cappuccino_required_coffee:
-            print("Sorry, there is no enough coffee!")
+            print(f"{Fore.YELLOW}Sorry, there is no enough coffee!{Style.RESET_ALL}")
 
 
 def coin_counter():
