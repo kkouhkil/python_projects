@@ -153,5 +153,3 @@ def coffee_machine():
 
 
 coffee_machine()
-# print(MENU)
-# print(resources)
