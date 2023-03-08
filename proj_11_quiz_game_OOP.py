@@ -33,6 +33,8 @@ class QuizBrain:
 
     def next_question(self):
         current_question = self.question_list[self.question_number]
+        input(f"Q.{self.question_number + 1}: {current_question.text}. (True/False)? ")
+        self.question_number += 1
 
 
 question_bank = []
@@ -40,4 +42,5 @@ question_bank = []
 for i in range(len(question_data)):
     question_bank.append(Question(question_data[i]["text"], question_data[i]["answer"]))
 
-
+quiz = QuizBrain(question_bank)
+quiz.next_question()
