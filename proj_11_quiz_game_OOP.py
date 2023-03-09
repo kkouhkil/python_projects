@@ -27,14 +27,36 @@ class Question:
 
 
 class QuizBrain:
+
     def __init__(self, q_list):
+        self.correct_answer = None
+        self.user_input_answer = ""
         self.question_number = 0
         self.question_list = q_list
+        self.quiz_score = 0
 
     def next_question(self):
         current_question = self.question_list[self.question_number]
-        input(f"Q.{self.question_number + 1}: {current_question.text}. (True/False)? ")
+        self.user_input_answer = input(f"Q.{self.question_number + 1}: {current_question.text}. (True/False)? ").lower()
+        self.correct_answer = current_question.answer
         self.question_number += 1
+
+    def still_has_question(self):
+        if self.question_number < len(self.question_list):
+            return True
+        else:
+            return False
+
+    def check_answer(self, user_input_answer, correct_answer):
+        if user_input_answer.lower() == correct_answer.lower():
+            self.quiz_score += 1
+            print("You're right!")
+        else:
+            print("You got it wrong!")
+
+        print(f"The correct answer was: {correct_answer}")
+        # print(f"Your current score is: {self.quiz_score}/{self.question_number}")
+        print("\n")
 
 
 question_bank = []
@@ -43,4 +65,12 @@ for i in range(len(question_data)):
     question_bank.append(Question(question_data[i]["text"], question_data[i]["answer"]))
 
 quiz = QuizBrain(question_bank)
-quiz.next_question()
+
+while quiz.still_has_question():
+    quiz.next_question()
+    quiz.check_answer(quiz.user_input_answer, quiz.correct_answer)
+
+print("You've just completed the Quiz Game")
+print(f"Your score is: {quiz.quiz_score}/{len(question_bank)}")
+
+
