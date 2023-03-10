@@ -1,6 +1,7 @@
 """Author: Keyhan Kouhkiloui Babarahmati
            PhD in Robotics and AI
 """
+from colorama import Fore, Style
 
 question_data = [
     {"text": "A slug's blood is green.", "answer": "True"},
@@ -50,11 +51,14 @@ class QuizBrain:
     def check_answer(self, user_input_answer, correct_answer):
         if user_input_answer.lower() == correct_answer.lower():
             self.quiz_score += 1
-            print("You're right!")
+            print(f"{Fore.GREEN}You're right!{Style.RESET_ALL}")
         else:
-            print("You got it wrong!")
+            print(f"{Fore.RED}You got it wrong!{Style.RESET_ALL}")
 
-        print(f"The correct answer was: {correct_answer}")
+        if correct_answer == "True":
+            print(f"The correct answer was: {Fore.GREEN}{correct_answer}{Style.RESET_ALL}")
+        else:
+            print(f"The correct answer was: {Fore.RED}{correct_answer}{Style.RESET_ALL}")
         # print(f"Your current score is: {self.quiz_score}/{self.question_number}")
         print("\n")
 
@@ -70,7 +74,11 @@ while quiz.still_has_question():
     quiz.next_question()
     quiz.check_answer(quiz.user_input_answer, quiz.correct_answer)
 
-print("You've just completed the Quiz Game")
-print(f"Your score is: {quiz.quiz_score}/{len(question_bank)}")
-
+print("Congratulations!, You've just completed the Quiz Game!")
+if quiz.quiz_score < len(question_bank)/2:
+    print(f"Your score is: {Fore.RED}{quiz.quiz_score}{Style.RESET_ALL}/"
+          f"{Fore.GREEN}{len(question_bank)}{Style.RESET_ALL}")
+else:
+    print(f"Your score is: {Fore.GREEN}{quiz.quiz_score}{Style.RESET_ALL}/"
+          f"{Fore.GREEN}{len(question_bank)}{Style.RESET_ALL}")
 
